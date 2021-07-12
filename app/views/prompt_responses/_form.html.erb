@@ -1,0 +1,15 @@
+<div class="prompt-response-div">
+  <%= form_for [@prompt, @prompt_response], url: prompt_prompt_responses_path do |f| %>
+    <%= f.hidden_field(:user_id, :value => current_user.id) %>
+    <%= f.hidden_field(:prompt_id, :value => @prompt.id) %>
+    <h3><%= Prompt.find(params[:prompt_id]).prompt_question %></h3>
+    <div class="form-group">
+      <div class="field">
+        <%= f.text_area :response, rows: 20, cols: 70, class: 'form-control' %>
+      </div><br />
+      <div class="actions">
+        <%= f.submit class: 'btn btn-lg btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+</div>

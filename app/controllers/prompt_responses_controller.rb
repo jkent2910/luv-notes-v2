@@ -4,21 +4,21 @@ class PromptResponsesController < ApplicationController
   before_action :ensure_luver, only: [:show]
 
   def new
+    @prompt = Prompt.find(params[:prompt_id])
     @prompt_response = PromptResponse.new
   end
 
   def create
     @prompt_response = PromptResponse.new(prompt_response_params)
-
-    if @prompt_response.save
-      user = @prompt_response.user_id = current_user.id
-      luver = @prompt_response.luver_id = User.find(current_user).luver_id
+    if @prompt_response.save!
+      @prompt_response.user_id = current_user.id
+      @prompt_response.luver_id = current_user.luver_id
       @prompt_response.prompt_id = params[:prompt_id]
       @prompt_response.send_date = generate_random_time()
-      @prompt_response.save
+      @prompt_response.save!
 
-      user = User.find(user)
-      luver = User.find(luver)
+      user = current_user
+      luver = User.find(current_user.luver_id)
       email = luver.email
       prompt_response_date = @prompt_response.send_date
 
@@ -35,7 +35,7 @@ class PromptResponsesController < ApplicationController
 
     @prompt = Prompt.find(params[:prompt_id])
 
-    @luver = Profile.find_by(user_id: @prompt_response.user_id).full_name
+    @luver = User.find(current_user.luver_id)
   end
 
   private

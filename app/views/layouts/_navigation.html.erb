@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light sm-padding-left">
+  <%= link_to "Luv Notes", dashboard_path, class: "navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to "Home", dashboard_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <% if user_signed_in? %>
+          <%= link_to "Sign out", destroy_user_session_path, :method => 'delete', :class => 'btn btn-primary' %>
+        <% else %>
+          <%= link_to "Sign in", new_user_session_path, :class => "btn btn-danger" %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
