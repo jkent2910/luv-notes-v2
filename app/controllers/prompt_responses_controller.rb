@@ -1,7 +1,7 @@
 class PromptResponsesController < ApplicationController
 
-  before_filter :ensure_time, only: [:show]
-  before_filter :ensure_luver, only: [:show]
+  before_action :ensure_time, only: [:show]
+  before_action :ensure_luver, only: [:show]
 
   def new
     @prompt_response = PromptResponse.new
