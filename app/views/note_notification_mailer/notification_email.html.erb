@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-</head>
-<body>
-<p>
-  To login to the site, just follow this link: <%= @url %>.
-</p>
-<p>Thanks for joining and have a great day!</p>
-</body>
-</html>
+Hi, <%= @luver.email %>!
+
+You have a Luv Note from <%= @user.email %> waiting for you!  Click the link to login & view your Luv Note! <br />
+
+<%= link_to "Sign in now!", new_user_session_url %><br />
+
+xoxo,
+Julie

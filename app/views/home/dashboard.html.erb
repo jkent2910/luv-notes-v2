@@ -1,12 +1,12 @@
 <div class="container">
   <div clas="row">
-    <div class="col-md-3 centered-text">
+    <div class="col-md-6 centered-text">
       <h3>Your luver is <%= User.find(@user.luver_id).email %></h3>
-      <h4>Created <%= @response_count %> Luv Notes</h4>
-      <h4>Received <%= @received_count %> Luv Notes </h4>
+      <h5>Created <%= @response_count %> Luv Notes</h5>
+      <h5>Received <%= @received_count %> Luv Notes </h5>
 
       <% if @luv_notes_ready.any? %>
-        <h3>You have <%= @luv_notes_ready.count %> Luv Note(s)!</h3>
+        <h5>You have <%= @luv_notes_ready.count %> Luv Note(s)!</h5>
         <% @luv_notes_ready.each do |note| %><br />
           <%= link_to "View Note!", prompt_prompt_response_path(note.prompt_id, note), class: 'btn btn-primary'  %><br />
         <% end %>

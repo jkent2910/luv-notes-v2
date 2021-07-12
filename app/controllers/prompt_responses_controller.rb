@@ -22,7 +22,7 @@ class PromptResponsesController < ApplicationController
       email = luver.email
       prompt_response_date = @prompt_response.send_date
 
-      PromptMailer.prompt_mailer(user, luver, email).deliver_later(wait_until: prompt_response_date)
+      NoteNotificationMailer.notification_email(user, luver, email).deliver_later(wait_until: prompt_response_date)
 
       redirect_to root_path, notice: "Response saved."
     else
