@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   end
 
   def dashboard
+    @user = current_user 
     @response_count = PromptResponse.where(user_id: current_user.id).count
     @received_count = PromptResponse.where("luver_id = ? AND send_date <= ?", current_user.id, Date.today()).count
 
