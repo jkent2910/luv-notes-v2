@@ -1,6 +1,6 @@
 class NoteNotificationMailer < ApplicationMailer
 
-  def test_email
-    mail(to: "jkent2910@gmail.com", subject: "Test")
+  def notification_email
+    mail(to: "jkent2910@gmail.com", subject: "You have a new Luv Note")
   end
 end

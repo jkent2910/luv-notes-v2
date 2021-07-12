@@ -1,0 +1,29 @@
+<div class="container">
+  <div clas="row">
+    <div class="col-md-3 centered-text">
+      <h3>Your luver is <%= User.find(@user.luver_id).email %></h3>
+      <h4>Created <%= @response_count %> Luv Notes</h4>
+      <h4>Received <%= @received_count %> Luv Notes </h4>
+
+      <% if @luv_notes_ready.any? %>
+        <h3>You have <%= @luv_notes_ready.count %> Luv Note(s)!</h3>
+        <% @luv_notes_ready.each do |note| %><br />
+          <%= link_to "View Note!", prompt_prompt_response_path(note.prompt_id, note), class: 'btn btn-primary'  %><br />
+        <% end %>
+      <% else %>
+        <div class="extra-margin-top">
+          <h3>No Luv Notes right now</h3>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-offset-1 col-md-8">
+      <h2 class="centered-text">Send a Luv Note</h2>
+      <% @prompts.each do |prompt| %><br /><br />
+        <div class="well">
+          <h4><%= prompt.prompt_question %></h4>
+          <%= link_to "Answer prompt", new_prompt_prompt_response_path(prompt), class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
