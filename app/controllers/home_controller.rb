@@ -9,7 +9,7 @@ class HomeController < ApplicationController
     @received_count = PromptResponse.where("luver_id = ? AND send_date <= ?", current_user.id, Date.today()).count
 
     @luv_notes_ready = []
-    PromptResponse.where("luver_id = ? AND send_date <= ? AND send_date >= ?", current_user.id, Date.today(), Date.today - 7).each do |response|
+    PromptResponse.where("luver_id = ? AND send_date <= ? AND send_date <= ?", current_user.id, Date.today(), Date.today + 30).each do |response|
       @luv_notes_ready << response
     end
 
